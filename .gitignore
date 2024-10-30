@@ -52,3 +52,4 @@ rebel.xml
 /logs/
 /src/main/resources/application-dkw.yml
 .application-dev.xml
+/src/main/resources/application-dev.yml
