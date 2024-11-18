@@ -56,19 +56,12 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper,Blog> implements Blo
     public IPage<Blog>  QueryBlog (QueryForm form) {
         try {
             LambdaQueryWrapper<Blog> wrapper = new LambdaQueryWrapper();
-            Page<Blog> page=new Page<>(form.getPageIndex(), form.getPageSize());
+            IPage<Blog> page=new Page<>(form.getPageIndex(), form.getPageSize());
             if(!form.getTitle().isEmpty()){
                 wrapper.like(Blog::getTitle, form.getTitle());
             }
-            if(!form.getSummary().isEmpty()){
-                wrapper.like(Blog::getSummary, form.getSummary());
-            }
-            if(StrUtil.isNotBlank(form.getTagType())){
-                return blogMapper.selectByType(page,form);
-            } else {
-                wrapper.orderByDesc(Blog::getCreateTime);
-                return baseMapper.selectPage(page, wrapper);
-            }
+            IPage<Blog> iPage = blogMapper.selectPage(page, wrapper);
+            return iPage;
         } catch (DataAccessException ex) {
             // 处理数据访问异常，如果需要回滚事务
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
