@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @ApiModel
-public class BlogForm implements Serializable {
+public class PageForm implements Serializable {
 
     private static final long serialVersionUID = 3733751670823487574L;
 

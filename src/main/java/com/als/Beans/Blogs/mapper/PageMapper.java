@@ -12,6 +12,6 @@ import org.apache.ibatis.annotations.Param;
  * @author Administrator
  */
 @Mapper
-public interface BlogMapper extends BaseMapper<Blog> {
+public interface PageMapper extends BaseMapper<Blog> {
     IPage<Blog> selectByType(Page<Blog> page, @Param("form") QueryForm form);
 }
