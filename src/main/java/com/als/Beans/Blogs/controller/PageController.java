@@ -1,6 +1,6 @@
 package com.als.Beans.Blogs.controller;
 
-import com.als.Beans.Blogs.entity.Blog;
+import com.als.Beans.Blogs.entity.Page;
 import com.als.Beans.Blogs.form.PageForm;
 import com.als.Beans.Blogs.form.QueryForm;
 import com.als.Beans.Blogs.service.PageService;
@@ -30,7 +30,7 @@ public class PageController {
     @ApiOperation("页面列表查询")
     @PostMapping("/queryList")
     public ResultUtil queryList(@RequestBody QueryForm form) {
-        IPage<Blog> pageList = pageService.queryPage(form);
+        IPage<Page> pageList = pageService.queryPage(form);
         return ResultUtil.success(pageList);
     }
 

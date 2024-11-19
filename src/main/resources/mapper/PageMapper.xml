@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.als.Beans.Blogs.mapper.PageMapper">
-    <select id="selectByType" parameterType="object" resultType="com.als.Beans.Blogs.entity.Blog">
+    <select id="selectByType" parameterType="object" resultType="com.als.Beans.Blogs.entity.Page">
         SELECT *
         FROM blogInfo
         WHERE CONCAT(',', REPLACE(tagTypes, ' ', ''), ',') LIKE concat('%', #{form.tagType}, '%')

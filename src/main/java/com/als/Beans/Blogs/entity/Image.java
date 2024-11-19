@@ -6,16 +6,23 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author dkw
  */
 @Data
-@TableName("tagsInfo")
-public class Tag {
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
+@TableName("images")
+public class Image implements Serializable {
+
+    private static final long serialVersionUID = -333323961730706490L;
+
+    @TableId(value = "id",type = IdType.ASSIGN_ID)
     private String id;
 
+    @TableField("name")
+    private String name;
 
-    @TableField("tag")
-    private String tag;
+    @TableField("image")
+    private String image;
 }
