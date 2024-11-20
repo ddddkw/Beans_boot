@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.sql.Blob;
 
 /**
  * @author dkw
@@ -24,5 +25,5 @@ public class Image implements Serializable {
     private String name;
 
     @TableField("image")
-    private String image;
+    private byte[] image;
 }
