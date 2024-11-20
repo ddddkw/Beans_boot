@@ -26,7 +26,7 @@ public class ImageController {
 
     @ApiOperation("图片上传")
     @PostMapping("/upload")
-    public ResultUtil addImage(@RequestParam("image") MultipartFile file){
+    public ResultUtil addImage(MultipartFile file){
         try {
             // 将 MultipartFile 转换为 byte[]
             byte[] imageBytes = file.getBytes();
