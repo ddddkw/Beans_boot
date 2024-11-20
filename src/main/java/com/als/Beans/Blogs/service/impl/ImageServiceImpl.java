@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author dkw
  */
@@ -23,8 +25,8 @@ public class ImageServiceImpl extends ServiceImpl<ImageMapper, Image> implements
     }
 
     @Override
-    public void queryImage(ImageForm imageForm) {
-        LambdaQueryWrapper<Image> lambdaQueryWrapper = new LambdaQueryWrapper();
-        lambdaQueryWrapper.eq(Image::getName,imageForm.getName());
+    public List queryImage() {
+        List<Image> list = baseMapper.selectImages();
+        return list;
     }
 }

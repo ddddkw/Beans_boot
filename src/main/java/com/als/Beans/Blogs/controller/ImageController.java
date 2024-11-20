@@ -1,18 +1,18 @@
 package com.als.Beans.Blogs.controller;
 
+import com.als.Beans.Blogs.entity.Image;
 import com.als.Beans.Blogs.form.ImageForm;
 import com.als.Beans.Blogs.service.ImageService;
 import com.als.Beans.Blogs.utils.ResultUtil;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author dkw
@@ -25,7 +25,7 @@ public class ImageController {
     private ImageService imageService;
 
     @ApiOperation("图片上传")
-    @PostMapping("/addImage")
+    @PostMapping("/upload")
     public ResultUtil addImage(@RequestParam("image") MultipartFile file){
         try {
             // 将 MultipartFile 转换为 byte[]
@@ -47,8 +47,9 @@ public class ImageController {
     }
 
     @ApiOperation("图片查询")
-    @PostMapping("/queryImage")
+    @GetMapping("/queryImage")
     public ResultUtil queryImage(){
-        return ResultUtil.success();
+        List<Image> list = imageService.queryImage();
+        return ResultUtil.success(list);
     }
 }

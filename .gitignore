@@ -53,3 +53,4 @@ rebel.xml
 /src/main/resources/application-dkw.yml
 .application-dev.xml
 /src/main/resources/application-dev.yml
+/src/main/resources/application-lowCode.yml
