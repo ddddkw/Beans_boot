@@ -29,4 +29,11 @@ public class ImageServiceImpl extends ServiceImpl<ImageMapper, Image> implements
         List<Image> list = baseMapper.selectImages();
         return list;
     }
+
+    @Override
+    public void deleteImage(String Id){
+        LambdaQueryWrapper<Image> queryWrapper =new LambdaQueryWrapper();
+        queryWrapper.eq(Image::getId,Id);
+        baseMapper.delete(queryWrapper);
+    }
 }

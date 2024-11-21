@@ -52,4 +52,11 @@ public class ImageController {
         List<Image> list = imageService.queryImage();
         return ResultUtil.success(list);
     }
+
+    @ApiOperation("图片查询")
+    @GetMapping("/deleteImage")
+    public ResultUtil deleteImage(@RequestParam String id){
+        imageService.deleteImage(id);
+        return ResultUtil.success();
+    }
 }

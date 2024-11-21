@@ -11,5 +11,7 @@ public interface ImageService {
 
     void addImage(ImageForm imageForm);
 
+    void deleteImage(String Id);
+
     List queryImage();
 }
