@@ -19,12 +19,12 @@ public class TableController {
     private DatabaseService databaseService;
 
     @PostMapping("/createTable")
-    public String createTable(@RequestBody CreateTableForm createTableForm) {
+    public ResultUtil createTable(@RequestBody CreateTableForm createTableForm) {
         try {
             databaseService.createTable(createTableForm.getTableName(), createTableForm.getColumnDefinitions());
-            return String.format("Table %s created successfully!", createTableForm.getTableName());
+            return ResultUtil.success();
         } catch (Exception e) {
-            return String.format("Error creating table %s: %s", createTableForm.getTableName(), e.getMessage());
+            return ResultUtil.fail();
         }
     }
 
