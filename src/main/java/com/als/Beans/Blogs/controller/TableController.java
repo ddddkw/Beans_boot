@@ -32,4 +32,14 @@ public class TableController {
     public ResultUtil getTables(){
         return ResultUtil.success(databaseService.getAllTables());
     }
+
+    @GetMapping("/getColumns")
+    public ResultUtil getColumns(@RequestParam("tableName") String tableName){
+        return ResultUtil.success(databaseService.getColumns(tableName));
+    }
+
+    @GetMapping("/queryTableData")
+    public ResultUtil queryTableData(@RequestParam("tableName") String tableName){
+        return ResultUtil.success(databaseService.queryTableData(tableName));
+    }
 }
