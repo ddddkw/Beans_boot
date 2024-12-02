@@ -1,6 +1,8 @@
 package com.als.Beans.Blogs.controller;
 
 import com.als.Beans.Blogs.form.CreateTableForm;
+import com.als.Beans.Blogs.form.DeleteForm;
+import com.als.Beans.Blogs.form.InsertForm;
 import com.als.Beans.Blogs.service.DatabaseService;
 import com.als.Beans.Blogs.utils.ResultUtil;
 import io.swagger.annotations.Api;
@@ -41,5 +43,18 @@ public class TableController {
     @GetMapping("/queryTableData")
     public ResultUtil queryTableData(@RequestParam("tableName") String tableName){
         return ResultUtil.success(databaseService.queryTableData(tableName));
+    }
+
+    @PostMapping("/deleteData")
+    public ResultUtil deleteData(@RequestBody DeleteForm deleteForm){
+        databaseService.deleteData(deleteForm.getTableName(),deleteForm.getId());
+        return ResultUtil.success();
+    }
+
+
+    @PostMapping("/insertData")
+    public ResultUtil insertData(@RequestBody InsertForm insertForm){
+        databaseService.saveData(insertForm);
+        return ResultUtil.success();
     }
 }

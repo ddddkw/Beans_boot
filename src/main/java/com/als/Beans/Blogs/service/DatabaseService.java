@@ -1,5 +1,6 @@
 package com.als.Beans.Blogs.service;
 
+import com.als.Beans.Blogs.form.InsertForm;
 import com.als.Beans.Blogs.utils.ResultUtil;
 
 import java.util.List;
@@ -17,4 +18,10 @@ public interface DatabaseService {
     List queryTableData(String tableName);
 
     List<Map<String, Object>> getColumns(String tableName);
+
+    void deleteData(String tableName, String id);
+
+    void saveData(InsertForm insertForm);
+
+
 }
