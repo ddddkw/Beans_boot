@@ -16,7 +16,7 @@ public interface PageService {
 
     void updatePage(PageForm pageForm);
 
-    void deletePage(PageForm pageForm);
+    void deletePage(String id);
 
     Pages queryDetail(String id);
 }

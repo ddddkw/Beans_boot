@@ -35,6 +35,9 @@ public class PageServiceImpl extends ServiceImpl<PageMapper, Pages> implements P
     @Override
     public void updatePage(PageForm form){
         Pages pages = new Pages();
+        pages.setId(form.getId());
+        pages.setPageName(form.getPageName());
+        pages.setPageJson(form.getPageJson());
         saveOrUpdate(pages);
     }
 
@@ -56,9 +59,8 @@ public class PageServiceImpl extends ServiceImpl<PageMapper, Pages> implements P
         }
     }
     @Override
-    public void deletePage(PageForm form){
-        Pages pages = new Pages();
-        saveOrUpdate(pages);
+    public void deletePage(String id){
+        pageMapper.deleteById(id);
     }
     @Override
     public Pages queryDetail(String id){

@@ -46,9 +46,9 @@ public class PageController {
     }
 
     @ApiOperation("删除页面接口")
-    @PostMapping("/deletePage")
-    public ResultUtil deletePage(@RequestBody PageForm form) {
-        pageService.deletePage(form);
+    @GetMapping("/deletePage")
+    public ResultUtil deletePage(@RequestParam("id") String id) {
+        pageService.deletePage(id);
         return ResultUtil.success();
     }
 
