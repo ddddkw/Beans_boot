@@ -1,6 +1,6 @@
 package com.als.Beans.Blogs.controller;
 
-import com.als.Beans.Blogs.entity.Page;
+import com.als.Beans.Blogs.entity.Pages;
 import com.als.Beans.Blogs.form.PageForm;
 import com.als.Beans.Blogs.form.QueryForm;
 import com.als.Beans.Blogs.service.PageService;
@@ -8,10 +8,7 @@ import com.als.Beans.Blogs.utils.ResultUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -30,7 +27,7 @@ public class PageController {
     @ApiOperation("页面列表查询")
     @PostMapping("/queryList")
     public ResultUtil queryList(@RequestBody QueryForm form) {
-        IPage<Page> pageList = pageService.queryPage(form);
+        IPage<Pages> pageList = pageService.queryPage(form);
         return ResultUtil.success(pageList);
     }
 
@@ -56,9 +53,8 @@ public class PageController {
     }
 
     @ApiOperation("查询页面详情")
-    @PostMapping("/queryDetail")
-    public ResultUtil queryDetail(@RequestBody PageForm form) {
-        pageService.queryDetail(form);
-        return ResultUtil.success();
+    @GetMapping("/queryDetail")
+    public ResultUtil queryDetail(@RequestParam("id") String id) {
+        return ResultUtil.success(pageService.queryDetail(id));
     }
 }

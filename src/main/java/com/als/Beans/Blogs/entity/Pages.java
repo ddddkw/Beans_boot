@@ -14,12 +14,15 @@ import java.io.Serializable;
  */
 @Data
 @TableName("pages")
-public class Page implements Serializable {
+public class Pages implements Serializable {
 
     private static final long serialVersionUID = -8397673869982311349L;
 
-    @TableId(value = "pageId", type = IdType.ASSIGN_ID)
-    private String pageId;
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    private String id;
+
+    @TableField("pageName")
+    private String pageName;
 
     @TableField("pageJson")
     private String pageJson;

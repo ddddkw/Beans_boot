@@ -1,5 +1,6 @@
 package com.als.Beans.Blogs.service;
 
+import com.als.Beans.Blogs.entity.Pages;
 import com.als.Beans.Blogs.form.PageForm;
 import com.als.Beans.Blogs.form.QueryForm;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -17,5 +18,5 @@ public interface PageService {
 
     void deletePage(PageForm pageForm);
 
-    void queryDetail(PageForm pageForm);
+    Pages queryDetail(String id);
 }
