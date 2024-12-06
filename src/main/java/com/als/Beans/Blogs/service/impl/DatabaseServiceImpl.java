@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author dkw
@@ -39,7 +40,13 @@ public class DatabaseServiceImpl implements DatabaseService {
     @Override
     public List<String> getAllTables() {
         String sql = "SHOW TABLES";
-        return jdbcTemplate.queryForList(sql, String.class);
+        // 执行查询并获取所有表名
+        List<String> allTables = jdbcTemplate.queryForList(sql, String.class);
+
+        // 使用 stream 过滤掉 "pages" 表
+        return allTables.stream()
+                .filter(tableName -> !"pages".equalsIgnoreCase(tableName))  // 将表名不等于pages的数据过滤出来并且收集为list
+                .collect(Collectors.toList());
     }
 
     @Override
